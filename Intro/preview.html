@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function header() {
+            document.getElementById("header").innerHTML = "Header"
+        }
+        function para() {
+            document.getElementById("para").innerHTML = "Paragraph"
+        }
+        function bold() {
+            document.getElementById("bold").innerHTML = "Play Bold"
+        }
+        function strong() {
+            document.getElementById("strong").innerHTML = "Be Strong"
+        }
+        function ul() {
+            document.getElementById("menu").innerHTML = "Menu"
+        }
+        function select() {
+            document.getElementById("dropdown").innerHTML = `<select >
+                <option id="i1">Op1</option>
+                <option id="i2">Op2</option>
+                <option id="i3">Op3</option>
+            </select>`
+        }
+        function img() {
+            var imageContainer = document.getElementById("imageContainer");
+            var image = document.createElement("img");
+            image.src = "logo192.png"; // Replace "image.jpg" with the actual image source
+            imageContainer.appendChild(image);
+        }
+        function link() {
+            document.getElementById("a").innerHTML = "Link"
+        }
+        function text() {
+            var textareaContainer = document.getElementById("textareaContainer");
+            var textarea = document.createElement("textarea");
+            textareaContainer.appendChild(textarea);
+        }
+        function showForm() {
+            var formContainer = document.getElementById("formContainer");
+            var form = document.createElement("form");
+            form.innerHTML = '<input type="text" name="name" placeholder="Name"><br>' +
+                '<input type="email" name="email" placeholder="Email"><br>' +
+                '<button type="submit">Submit</button>';
+            formContainer.appendChild(form);
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                var name = form.elements.name.value;
+                var email = form.elements.email.value
+                var outputContainer = document.getElementById("outputContainer");
+                var nameOutput = document.createElement("p");
+                var emailOutput = document.createElement("p");
+
+                nameOutput.textContent = "Name: " + name;
+                emailOutput.textContent = "Email: " + email;
+                outputContainer.appendChild(nameOutput);
+                outputContainer.appendChild(emailOutput);
+            });
+
+        }
+        function extractAndPrint() {
+            const htmlInput = document.getElementById('htmlInput').value;
+            const innerContent = extractInnerContent(htmlInput);
+            document.getElementById('result').innerText = innerContent;
+        }
+
+        function extractInnerContent(html) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, 'text/html');
+            const innerContent = doc.body.firstChild.textContent;
+            return innerContent;
+        }
+    </script>
+</head>
+
+<body>
+
+    <button onclick="header()">Header</button>
+    <h1 id="header"></h1>
+
+    <p id="para"></p>
+    <button onclick="para()">Paragraph</button><br><br>
+
+    <b id="bold"></b>
+    <button onclick="bold()">Bold</button><br>
+
+    <strong id="strong"></strong>
+    <button onclick="strong()">Strong</button><br>
+
+    <ul id="menu">
+        <li id="home">Home</li>
+        <li id="contact">contact</li>
+        <li id="about">About</li>
+    </ul>
+    <button onclick="ul()">UL</button><br><br>
+
+    <div id="dropdown"></div>
+        <button onclick="select()">Select</button><br><br>
+
+        <div id="imageContainer"></div>
+        <button onclick="img()">IMG</button><br><br>
+
+        <a href="https://www.linkedin.com/in/shivam-ardeshna-bb8b64220/" id="a"></a>
+        <button onclick="link()">Linkedin</button><br><br>
+
+        <div id="textareaContainer"></div>
+        <button onclick="text()">Textarea</button>
+
+    <button onclick="showForm()">Click Me</button>
+    <div id="formContainer"></div>
+    <div id="outputContainer"></div>
+
+    <textarea id="htmlInput" rows="10" cols="50"></textarea>
+    <br />
+    <button onclick="extractAndPrint()">Extract Inner Content</button>
+    <div id="result"></div>
+
+</body>
+
+</html>
