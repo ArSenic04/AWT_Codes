@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Charusat</title>
+
+</head>
+
+<body>
+    <h1>CSPIT Institute Details</h1>
+    <div id="cspitDetails"></div>
+    <h2>CE Department Details</h2>
+    <div id="ceDetails"></div>
+
+    <script>
+        var CSPIT = {
+            yearOfEstablishment: 2005,
+            location: "Gujarat, India",
+            departments: ["CE", "IT", "CS", "EC", "EE", "CL", "ME"],
+
+            getAllDetails: function () {
+                var details = "Year of Establishment: " + this.yearOfEstablishment + "<br>" +
+                    "Location: " + this.location + "<br>" +
+                    "Departments: " + this.departments.join(", ");
+                document.getElementById("cspitDetails").innerHTML = details;
+            }
+        };
+
+        CSPIT.CE = function () {
+            this.totalStudents = 250;
+            this.totalFaculty = 30;
+        };
+        CSPIT.getAllDetails();
+        var ceDepartment = new CSPIT.CE();
+        var ceDetails = "Total Students: " + ceDepartment.totalStudents + "<br>" +"Total Faculty: " + ceDepartment.totalFaculty;
+        document.getElementById("ceDetails").innerHTML = ceDetails;
+    </script>
+</body>
+
+</html>

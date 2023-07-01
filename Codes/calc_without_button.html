@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function f1() {
+            var num1 = parseInt(document.getElementById("num1").value);
+            var num2 = parseInt(document.getElementById("num2").value);
+
+            var addition = num1 + num2;
+            document.getElementById("add").textContent = "Addition: " + addition;
+
+            var subtraction = num1 - num2;
+            document.getElementById("sub").textContent = "Subtraction: " + subtraction;
+
+            var multiplication = num1 * num2;
+            document.getElementById("mul").textContent = "Multiplication: " + multiplication;
+
+            var division = num1 / num2;
+            document.getElementById("div").textContent = "Division: " + division;
+        }
+    </script>
+</head>
+
+<body>
+    <h2>Enter Numbers</h2><br><br>
+    <span>First Number: <input type="number" required id="num1"></span><br><br>
+    <span>Second Number: <input type="number" required id="num2" onblur="f1()"></span><br><br>
+    <label id="add"></label><br>
+    <label id="sub"></label><br>
+    <label id="mul"></label><br>
+    <label id="div"></label><br>
+</body>
+
+</html>
