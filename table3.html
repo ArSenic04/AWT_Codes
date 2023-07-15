@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="Generate button" onclick="generate_table()">
+    <hr>
+    <div id="dvtable">
+    </div>
+    <script>
+        function generate_table() {
+            var customers = [
+                ["Tokyo", "India"],
+                ["Shivam", "India"],
+                ["Rio", "USA"],
+                ["Manila", "UK"]
+            ];
+
+            var promptrow = prompt("Enter the Row");
+            var insertRow = parseInt(promptrow);
+            var promptcol = prompt("Enter the Column");
+            var insertCol = parseInt(promptcol);
+            var promptcontent = prompt("Enter the Content");
+
+            if (isNaN(insertRow) || isNaN(insertCol) || insertRow < 0 || insertRow >= customers.length || insertCol < 0 || insertCol >= customers[0].length) {
+                alert("Invalid input!");
+                return;
+            }
+
+            customers[insertRow][insertCol] = promptcontent;
+
+            var table = document.createElement("table");
+            table.border = "1";
+            var columnCount = customers[0].length;
+
+            for (var i = 0; i < customers.length; i++) {
+                var row = table.insertRow();
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell();
+                    cell.innerHTML = customers[i][j];
+                }
+            }
+
+            var dvtable = document.getElementById("dvtable");
+            dvtable.innerHTML = "";
+            dvtable.appendChild(table);
+        }
+
+    </script>
+</body>
+
+</html>

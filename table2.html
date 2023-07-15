@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="button" value="Generate button" onclick="generate_table()">
+    <hr>
+    <div id="dvtable">
+    </div>
+    <script>
+        function generate_table() {
+            var customers = [
+            [1,"Tokyo", "India"],
+            [2,"Shivam", "India"],
+            [3,"Rio", "USA"],
+            [4,"Manila", "UK"]
+            ];
+
+            var promptInput = prompt("Enter the index where you want to insert a new row:");
+            var insertIndex = parseInt(promptInput);
+
+            if (isNaN(insertIndex) || insertIndex < 0 || insertIndex > customers.length) {
+                alert("Invalid input!");
+                return;
+            }
+
+            var newCustomer = [100, "Messi", "Argentina"];
+            var newCustomers = [];
+
+            for (var i = 0; i < customers.length; i++) {
+                if (i === insertIndex) {
+                    newCustomers.push(newCustomer);
+                }
+                newCustomers.push(customers[i]);
+            }
+            if (insertIndex === customers.length) {
+                newCustomers.push(newCustomer);
+            }
+            var table = document.createElement("table");
+            table.border = "1";
+            var columnCount = customers[0].length;
+
+            for (var i = 0; i < newCustomers.length; i++) {
+                var row = table.insertRow();
+
+                for (var j = 0; j < columnCount; j++) {
+                    var cell = row.insertCell();
+                    cell.innerHTML = newCustomers[i][j];
+                }
+            }
+
+            var dvtable = document.getElementById("dvtable");
+            dvtable.innerHTML = "";
+            dvtable.appendChild(table);
+        }
+
+    </script>
+</body>
+
+</html>
